@@ -25,25 +25,7 @@ def get_data_postgres():
 
     try:
         sql = """
-            SELECT distinct sol.idsolicitacaoservico,
-                                  sol.datahorasolicitacao,
-                                  sol.datahorasuspensaosla,
-                                  sol.idusuarioresponsavelatual,
-                                   CASE WHEN prazohh >= tempoatendimentohh THEN 1 WHEN prazohh = 0 then 1 ELSE 0 
-                                   END AS dentro_prazo,
-                                   idstatus,
-                                    CASE 
-									        WHEN idusuarioresponsavelatual = 3546 THEN 'Enzo'
-									        WHEN idusuarioresponsavelatual = 2173 THEN 'Ben-Hur'
-									        WHEN idusuarioresponsavelatual = 1006 THEN 'Marco'
-									        WHEN idusuarioresponsavelatual = 21 THEN 'Juliano'
-									        WHEN idusuarioresponsavelatual = 3554 THEN 'David' 
-									        ELSE 'Desconhecido' 
-									    END AS colaborador
-                         from solicitacaoservico as sol 
-                         where idgrupoatual IN (22,23,421) 
-                         AND idstatus IN (1,6) 
-                         AND datahorasolicitacao >= CURRENT_DATE - 90"""
+            SELECT campos FROM tabela"""
 
         cursor = conexao.cursor()
         cursor.execute(sql)
