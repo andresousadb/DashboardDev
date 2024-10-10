@@ -8,15 +8,16 @@
     <meta http-equiv="refresh" content="60">
 </head>
 <div class="content">
-    <div class="container"><a class="citsmart">Painel Infraestrutura</a></div>
+    <div class="container"><a class="citsmart">Painel Desenvolvimento</a></div>
      <div class="container"><a class="dias">últimos 90 dias</a></div>
     <div class="row" >
         <div class="col-12">
             <div class="card card-chart">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-sm-3 text-left letra-esquerda">
-                            <h3 class="card-title">Aguardando
+
+                        <div class="col-sm-6 ">
+                            <h3 class="card-title text-center ">Fila de Atendimento
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                                      class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -24,37 +25,21 @@
                                     <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
                                 </svg>
                             </h3>
-                            <ul>
+                              <ul class="five-columns">
                                 {% for item in aguardando %}
-                                <li class="card-item-aguard">{{ item.id }}</li>
+                                  <li class="card-item">{{ item.id }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
-                        <div class="col-sm-6 text-center">
-                            <h3 class="card-title">Em Atendimento
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                     class="bi bi-person-workspace" viewBox="0 0 16 16">
-                                    <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-                                    <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z"/>
-                                </svg>
-                            </h3>
-                                <ul>
-                            {% for item in em_atendimento %}
-                            <li class="card-item-wrapper">
-                                <span class="card-item-em">{{ item.id }}</span>---
-                                <span class="card-item-colab">{{ item.colaborador }}</span>
-                            </li>
-                            {% endfor %}
-                                 </ul>
-                                </div>
-                    <div class="col-sm-3 text-right">
+
+                    <div class="col-sm-3 text-right" style="margin-left: auto;">
                             <h3 class="card-title letra-direita">Atendidos
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                                      class="bi bi-pc-display-horizontal" viewBox="0 0 16 16">
                                     <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25"/>
                                 </svg>
                             </h3>
-                            <ul class="four-columns text-right">
+                            <ul class="tre-columns text-right">
                                 {% for item in atendido %}
                                     {% if item.prazo < 1 %}
                                         <li class="card-item card-item-fora-prazo">{{ item.id }}</li>
@@ -64,8 +49,6 @@
                                 {% endfor %}
                             </ul>
                         </div>
-
-
 
                     </div>
                 </div>

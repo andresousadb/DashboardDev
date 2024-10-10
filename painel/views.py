@@ -62,9 +62,8 @@ def dashboard(request):
     total_dentro_prazo = 0
     total_fora_prazo = 0
 
-    aguardando = [item for item in dados_json if item['status'] == 1 and item['responsavel'] is None]
-    em_atendimento = [item for item in dados_json if item['status'] == 1 and item['responsavel'] is not None]
-    atendido = sorted([item for item in dados_json if item['status'] == 6 ],key=lambda x: x['dt_encerrado'],reverse=True)[:30]
+    aguardando = sorted([item for item in dados_json if item['status'] == 1], key=lambda x: x['data_solicitacao'],reverse=True)[:50]
+    atendido = sorted([item for item in dados_json if item['status'] == 6], key=lambda x: x['dt_encerrado'],reverse=True)[:30]
 
     for total in dados_json:
         if 'id' in total and total['status'] == 6:
@@ -87,7 +86,6 @@ def dashboard(request):
         'parent': 'pages',
         'segment': 'dashboard',
         'aguardando': aguardando,
-        'em_atendimento': em_atendimento,
         'atendido': atendido,
         'total_id':total_id,
         'total_id_aberto': total_id_aberto,

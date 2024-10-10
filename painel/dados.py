@@ -25,14 +25,23 @@ def get_data_postgres():
 
     try:
         sql = """
-            SELECT campos FROM tabela"""
+            SELECT distinct sol.idsolicitacaoservico,
+                                  sol.datahorasolicitacao,
+                                  sol.datahorasuspensaosla,
+                                   CASE WHEN prazohh >= tempoatendimentohh THEN 1 WHEN prazohh = 0 then 1 ELSE 0 
+                                   END AS dentro_prazo,
+                                   idstatus
+                         from solicitacaoservico as sol 
+                         where idgrupoatual IN (71,221) 
+                         AND idstatus IN (1,6) 
+                         AND datahorasolicitacao >= CURRENT_DATE - 90"""
 
         cursor = conexao.cursor()
         cursor.execute(sql)
         results = cursor.fetchall()
 
         consulta = [list(row) for row in results]
-        dados = pd.DataFrame(consulta, columns=["id", "data_solicitacao", "dt_encerrado","responsavel","prazo", "status", "colaborador"]).drop_duplicates()
+        dados = pd.DataFrame(consulta, columns=["id", "data_solicitacao", "dt_encerrado","prazo", "status"]).drop_duplicates()
         dados = dados.sort_values(by=['data_solicitacao'], ascending=True)
 
         dados['data_solicitacao'] = pd.to_datetime(dados['data_solicitacao'])

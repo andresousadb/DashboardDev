@@ -19708,10 +19708,16 @@ Copyright (c) 2015 Daniel Eden
     color: #fff !important;
 }
 
-.four-columns {
+.tre-columns {
     -webkit-column-count: 3; /* Chrome, Safari, Opera */
     -moz-column-count: 3; /* Firefox */
     column-count: 3;
+}
+
+.five-columns {
+    -webkit-column-count: 5; /* Chrome, Safari, Opera */
+    -moz-column-count: 5; /* Firefox */
+    column-count: 5;
 }
 
 .two-columns {
@@ -19725,13 +19731,6 @@ Copyright (c) 2015 Daniel Eden
         font-weight: bold;
         font-family: Arial;
 
-    }
-
-.card-item-aguard {
-        font-size: 30px;
-        font-weight: bold;
-        font-family: Arial;
-         margin-left: 22px;
     }
 
 
@@ -19764,11 +19763,17 @@ Copyright (c) 2015 Daniel Eden
 
 
 .letra-esquerda {
-    left: 50px;
+    left: 1px;
+   font-size: 50px;
 }
 
 .letra-direita {
-  margin-right: 80px;
+  margin-right: 100px;
+  font-size: 30px;
+}
+
+.letra-direita_atendimento {
+  margin-right: 200px;
   font-size: 30px;
 }
 
@@ -19782,4 +19787,36 @@ ul {
         margin: 0;
     }
 
+ul.tre-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Alinha os itens no início */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.tre-columns li.card-item {
+    flex: 1 1 calc(33.33% - 10px); /* Ajusta para 3 itens por linha, com margem */
+    margin: 5px; /* Define um pequeno espaçamento entre os itens */
+    text-align: right; /* Mantém o alinhamento à direita */
+}
+
+
+
+
+ul.five-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Mantém os itens alinhados à esquerda */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.five-columns li.card-item {
+    flex: 1 1 calc(20% - 10px); /* Ajusta o tamanho de cada item para ocupar 20% com margem, já que 5 colunas são 20% cada */
+    text-align: left;
+    margin: 5px; /* Define o espaçamento entre os itens */
+}
 
